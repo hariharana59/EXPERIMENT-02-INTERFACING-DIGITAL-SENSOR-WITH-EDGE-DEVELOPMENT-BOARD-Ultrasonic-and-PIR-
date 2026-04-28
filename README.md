@@ -1,8 +1,8 @@
 # EXPERIMENT-02-INTERFACTING-DIGITAL-SENSOR-WITH-EDGE-DEVELOPMENT-BOARD-ULTRASONIC-AND-PIR-SENSOR-(RASPBERRYPI-PI4)
-### NAME 
-### DEPARTMENT 
-### ROLL NO 
-### DATE OF EXPERIMENT 
+### NAME :HARIHARAN A
+### DEPARTMENT:CSE-Iot
+### ROLL NO :212223110013
+### DATE OF EXPERIMENT :28/04/2026
 
 ### AIM
 To interface a digital sensor (Ultrasonic and PIR) with the Raspberry Pi 4 and control it using Python.
@@ -62,44 +62,134 @@ Connect the PIR sensor OUT to any one GPIO.
 Experiment 2A
 ## PROGRAM (Python)
 ```
+import RPi.GPIO as GPIO
+import time
+import requests
 
+WRITE_API_KEY = "475Z0CIRF8BEQXT9"
+URL = "https://api.thingspeak.com/update"
 
- 
+PIR_PIN = 17
 
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(PIR_PIN, GPIO.IN)
 
+print("PIR Monitoring Started...")
+time.sleep(2)
 
- 
-````
+last_state = -1   # store previous state
+
+def update_thingspeak(state):
+    data = {
+        "api_key": WRITE_API_KEY,
+        "field3": state
+    }
+    try:
+        requests.get(URL, params=data)
+        print("Uploaded to ThingSpeak:", state)
+    except:
+        print("Upload Failed")
+
+while True:
+    motion = GPIO.input(PIR_PIN)
+
+    if motion != last_state:   # send only if changed
+        if motion == 1:
+            print("Motion Detected")
+            update_thingspeak(1)
+        else:
+            print("No Motion")
+            update_thingspeak(0)
+
+        last_state = motion
+        time.sleep(15)  # ThingSpeak delay
+
+    time.sleep(1)
+
+```
 
 ### OUPUT  
 Experiment 2A
 
-# FIGURE -04 ADD TITILE HERE 
+# FIGURE -04 KIT:
+<img width="1010" height="1278" alt="image" src="https://github.com/user-attachments/assets/b62db8f9-964b-4233-b095-6f5bf8371369" />
 
-#  FIGURE -05 ADD TITILE HERE 
 
-# FIGURE -06 ADD TITLE HERE 
+#  FIGURE -05 OUTPUT TERMINAL:
+<img width="1297" height="736" alt="Screenshot 2026-04-28 135954" src="https://github.com/user-attachments/assets/f485618d-fbbc-44ed-925c-aac80f1a9f98" />
+
+
+# FIGURE -06 THINKSPEAK :
+<img width="1919" height="1079" alt="Screenshot 2026-04-28 135800" src="https://github.com/user-attachments/assets/4099d060-4f6c-4ff6-a74f-459571e65e6a" />
+
 
 Experiment 2B
 ## PROGRAM (Python)
 ```
+Import RPi.GPIO as GPIO
+import time
+import requests
 
+WRITE_API_KEY = "475Z0CIRF8BEQXT9"
+URL = "https://api.thingspeak.com/update"
 
- 
+PIR_PIN = 24
 
+GPIO.setmode(GPIO.BCM)
+GPIO.setup(PIR_PIN, GPIO.IN)
 
+print("PIR Monitoring Started...")
+time.sleep(2)
 
+last_state = -1   # store previous state
+
+def update_thingspeak(state):
+    data = {
+        "api_key": WRITE_API_KEY,
+        "field2": state
+    }
+    try:
+        requests.get(URL, params=data)
+        print("Uploaded to ThingSpeak:", state)
+    except:
+        print("Upload Failed")
+
+while True:
+    motion = GPIO.input(PIR_PIN)
+
+    if motion != last_state:   # send only if changed
+        if motion == 1:
+            print("Motion Detected")
+            update_thingspeak(1)
+        else:
+            print("No Motion")
+            update_thingspeak(0)
+
+        last_state = motion
+        time.sleep(15)  # ThingSpeak delay
+
+    time.sleep(1)
  
 ````
 
 ### OUPUT  
 Experiment 2B
 
-# FIGURE -07 ADD TITILE HERE 
+# FIGURE -07 KIT:
+<img width="1280" height="720" alt="WhatsApp Image 2026-04-28 at 2 14 51 PM" src="https://github.com/user-attachments/assets/00265098-bbe9-45b3-83b4-85a17126900a" />
 
-#  FIGURE -08 ADD TITILE HERE 
 
-# FIGURE -09 ADD TITLE HERE 
+#  FIGURE -08 OUTPUT TERMINAL
+<img width="1919" height="1078" alt="Screenshot 2026-04-28 143108" src="https://github.com/user-attachments/assets/16bfeaa0-e8ba-4e2e-9c99-e8a2c23a5dca" />
+
+<img width="1919" height="1079" alt="Screenshot 2026-04-28 143135" src="https://github.com/user-attachments/assets/6327d377-d28c-4e50-8ea5-6433ffd0d308" />
+
+
+# FIGURE -09 THINKSPEAK 
+<img width="1913" height="1079" alt="Screenshot 2026-04-28 143157" src="https://github.com/user-attachments/assets/a78361f8-a522-4d09-9f23-f02d8d8b75d5" />
+
+<img width="1919" height="1079" alt="Screenshot 2026-04-28 143207" src="https://github.com/user-attachments/assets/0ebd5687-db4b-439e-b4ef-fe91a1918b9e" />
+
 
  
 ## RESULTS
