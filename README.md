@@ -40,7 +40,7 @@ A Passive Infrared (PIR) sensor is a motion detection device that senses changes
 <img width="428" height="494" alt="image" src="https://github.com/user-attachments/assets/bb6b0f22-33d7-4d63-b5c6-05e6d655e71d" />
  ### FIGURE-03 PIR Sensor 
 ## Working Principle:
-Experiment 3A
+Experiment 2A
 The Ultrasonic sensor Trig pin is connected to one of the GPIO pins of the Raspberry Pi 4.
 The Ultrasonic sensor Echo pin is connected to one of the GPIO pins of the Raspberry Pi 4.
 The Python script sets the take the distance taken echo output and shown in Thingspeak cloud with current status and Console.
@@ -51,7 +51,7 @@ Connect the Trig pin to any one GPIO.
 Connect the Echo pin to any one GPIO.
 
 
-Experiment 3B
+Experiment 2B
 The IR sensor is connected one of the GPIO pins in Raspberry Pi 4.
 The Python script sets the PIR sensor value based on the motion detected and shown in Thingspeak and console.
 CIRCUIT DIAGRAM
@@ -59,7 +59,7 @@ Connect the PIR sensor Vcc to any +5V.
 Connect the PIR sensor GND to any GND.
 Connect the PIR sensor OUT to any one GPIO. 
 
-Experiment 3A
+Experiment 2A
 ## PROGRAM (Python)
 ```
 
@@ -72,7 +72,7 @@ Experiment 3A
 ````
 
 ### OUPUT  
-Experiment 3A
+Experiment 2A
 
 # FIGURE -04 ADD TITILE HERE 
 
@@ -80,7 +80,20 @@ Experiment 3A
 
 # FIGURE -06 ADD TITLE HERE 
 
-Experiment 3B
+Experiment 2B
+## PROGRAM (Python)
+```
+
+
+ 
+
+
+
+ 
+````
+
+### OUPUT  
+Experiment 2B
 
 # FIGURE -07 ADD TITILE HERE 
 
